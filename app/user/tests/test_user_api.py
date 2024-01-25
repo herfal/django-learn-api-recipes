@@ -84,7 +84,6 @@ class PublicUserApiTests(TestCase):
             "password": user_details["password"],
         }
 
-        print(TOKEN_URL, payload, "A")
         res = self.client.post(TOKEN_URL, payload)
 
         self.assertIn("token", res.data)
@@ -149,7 +148,7 @@ class PrivateUserApiTests(TestCase):
         """Test retrieving profile for logged in user."""
         res = self.client.get(ME_URL)
 
-        self.assertEqual(res.status_code, res.HTTP_200_0K)
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(
             res.data,
             {
